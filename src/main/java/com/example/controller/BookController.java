@@ -3,7 +3,6 @@ package com.example.controller;
 import com.example.dto.BookRequestDto;
 import com.example.dto.BookResponseDto;
 import com.example.service.BookService;
-import io.micronaut.data.annotation.Update;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
 import jakarta.validation.Valid;
@@ -36,9 +35,16 @@ public class BookController {
             return HttpResponse.ok(responseDto);
         }
 
-    @Patch("/{bookId}")
+    @Put("/{bookId}")
         public HttpResponse<BookResponseDto> updateBookById(@Body BookRequestDto requestDto, @PathVariable long bookId){
             BookResponseDto responseDto = bookService.updateBookById(bookId,requestDto);
             return HttpResponse.ok(responseDto);
         }
+
+    @Delete("/{bookId}")
+        public HttpResponse<String> deleteBookById(@PathVariable long bookId){
+            bookService.deleteBookById(bookId);
+            return HttpResponse.ok("Book deleted with id:"+bookId+" !");
+        }
+
 }
