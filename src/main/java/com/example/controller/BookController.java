@@ -1,15 +1,44 @@
 package com.example.controller;
 
-import io.micronaut.http.annotation.Controller;
-import io.micronaut.http.annotation.Get;
-import io.micronaut.http.client.annotation.Client;
-import jakarta.inject.Inject;
+import com.example.dto.BookRequestDto;
+import com.example.dto.BookResponseDto;
+import com.example.service.BookService;
+import io.micronaut.data.annotation.Update;
+import io.micronaut.http.HttpResponse;
+import io.micronaut.http.annotation.*;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
-import java.net.http.HttpClient;
+import java.util.List;
+
 
 @Controller("api/v1/")
+@RequiredArgsConstructor
 public class BookController {
 
+    private final BookService bookService;
 
+    @Post
+        public HttpResponse<BookResponseDto> addBook(@Valid @Body BookRequestDto requestDto){
+            BookResponseDto responseDto = bookService.addBook(requestDto);
+            return HttpResponse.created(responseDto);
+        }
 
+    @Get("/")
+        public HttpResponse<List<BookResponseDto>> getAllBook(){
+            List<BookResponseDto> responseDtos = bookService.getAllBooks();
+            return HttpResponse.ok(responseDtos);
+        }
+
+    @Get("/{bookId}")
+        public HttpResponse<BookResponseDto> getBookById(@PathVariable long bookId){
+            BookResponseDto responseDto = bookService.getBookById(bookId);
+            return HttpResponse.ok(responseDto);
+        }
+
+    @Patch("/{bookId}")
+        public HttpResponse<BookResponseDto> updateBookById(@Body BookRequestDto requestDto, @PathVariable long bookId){
+            BookResponseDto responseDto = bookService.updateBookById(bookId,requestDto);
+            return HttpResponse.ok(responseDto);
+        }
 }
