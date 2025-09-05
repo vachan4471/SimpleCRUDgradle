@@ -2,13 +2,13 @@ micronaut:
   application:
     name: SimpleCRUDgradle
   server:
-    port: 8070
+    port: ${SERVER_PORT:8080}
 
 datasource:
   default:
-    url: jdbc:postgresql://localhost:5432/SimpleCRUDgradle
-    username: postgres
-    password: 31030222
+    url: jdbc:postgresql://localhost:5432/${DB_NAME:defaultName}
+    username: ${DB_USERNAME:defaultUsername}
+    password: ${DB_PASSWORD:defaultPassword}
     db-type: postgres
     dialect: POSTGRES
     schema-generate: create-drop
@@ -20,4 +20,3 @@ jpa:
       hibernate:
         hbm2ddl:
           auto: create
-
