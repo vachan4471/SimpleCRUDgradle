@@ -1,0 +1,23 @@
+micronaut:
+  application:
+    name: SimpleCRUDgradle
+  server:
+    port: 8070
+
+datasource:
+  default:
+    url: jdbc:postgresql://localhost:5432/SimpleCRUDgradle
+    username: postgres
+    password: 31030222
+    db-type: postgres
+    dialect: POSTGRES
+    schema-generate: create-drop
+    driver-class-name: org.postgresql.Driver
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create
+
