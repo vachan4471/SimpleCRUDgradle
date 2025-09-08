@@ -35,6 +35,8 @@ dependencies {
     annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
     // to load .env
     implementation("io.github.cdimascio:java-dotenv:5.2.2")
+    testImplementation("io.github.cdimascio:java-dotenv:5.2.2")
+
 }
 
 
