@@ -7,11 +7,12 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "jsr330") //will generate the implementation class as a JSR-330 compliant bean (using @Named annotation)
 public interface BookMapperClass {
-    Book toEntity(BookRequestDto request);
+    @Mapping(source = "title", target = "bookTitle")
+    Book toEntity(BookRequestDto requestDto);
 
-    @Mapping(source = "bookId", target = "bookId")
+    @Mapping(source = "bookTitle", target = "title")
     BookResponseDto toResponse(Book book);
 
-    @Mapping(target = "bookId",ignore = true)
+    @Mapping(target = "bookId", ignore = true)
     void updateEntityFromDto(BookRequestDto requestDto, @MappingTarget Book book);
 }

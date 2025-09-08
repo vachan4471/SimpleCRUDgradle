@@ -2,11 +2,8 @@
 
 package com.example.entity;
 
-import io.micronaut.data.annotation.GeneratedValue;
 //import io.micronaut.data.annotation.MappedEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -19,8 +16,8 @@ import lombok.*;
 @Table(name = "books")
 public class Book {
     @Id
-    @GeneratedValue(GeneratedValue.Type.IDENTITY)
-    private long bookId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long bookId;
     private String bookTitle;
     private String author;
     private double price;

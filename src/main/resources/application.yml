@@ -3,20 +3,31 @@ micronaut:
     name: SimpleCRUDgradle
   server:
     port: ${SERVER_PORT:8080}
+    cors:
+      enabled: true
+      configurations:
+        web:
+          allowedOrigins:
+            - http://localhost:3000   # frontend, can also use "*"
+          allowedMethods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+            - OPTIONS
 
-datasource:
+datasources:
   default:
-    url: jdbc:postgresql://localhost:5432/${DB_NAME:defaultName}
-    username: ${DB_USERNAME:defaultUsername}
-    password: ${DB_PASSWORD:defaultPassword}
-    db-type: postgres
-    dialect: POSTGRES
-    schema-generate: create-drop
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB:Demo}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:secret}
+    driverClassName: org.postgresql.Driver
 
 jpa:
   default:
+    entity-scan:
+      packages: com.example.entity   # VERY IMPORTANT: your entities
     properties:
       hibernate:
         hbm2ddl:
-          auto: update
+          auto: update               # create, update, or create-drop

@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 
-@Controller("api/v1/")
+@Controller("api/v1/books")
 @RequiredArgsConstructor
 public class BookController {
 
@@ -23,7 +23,7 @@ public class BookController {
             return HttpResponse.created(responseDto);
         }
 
-    @Get("/")
+    @Get
         public HttpResponse<List<BookResponseDto>> getAllBook(){
             List<BookResponseDto> responseDtos = bookService.getAllBooks();
             return HttpResponse.ok(responseDtos);
@@ -40,6 +40,7 @@ public class BookController {
             BookResponseDto responseDto = bookService.updateBookById(bookId,requestDto);
             return HttpResponse.ok(responseDto);
         }
+        
 
     @Delete("/{bookId}")
         public HttpResponse<String> deleteBookById(@PathVariable long bookId){

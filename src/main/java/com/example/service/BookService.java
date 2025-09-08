@@ -47,7 +47,7 @@ public class BookService {
         }
         Book updateBook = savedBook.get();
         bookMapper.updateEntityFromDto(requestDto,updateBook);
-        return bookMapper.toResponse(bookRepo.save(updateBook));
+        return bookMapper.toResponse(bookRepo.update(updateBook));
     }
 
     public void deleteBookById(long bookId){
