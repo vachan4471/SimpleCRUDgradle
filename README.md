@@ -1,31 +1,29 @@
-## Micronaut 4.9.3 Documentation
+# Simple CRUD Micronaut Service
 
-- [User Guide](https://docs.micronaut.io/4.9.3/guide/index.html)
-- [API Reference](https://docs.micronaut.io/4.9.3/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/4.9.3/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
+A basic CRUD service built with Micronaut and Gradle.  
+This service manages `Book` records with simple endpoints.
+
 ---
 
-- [Shadow Gradle Plugin](https://gradleup.com/shadow/)
-- [Micronaut Gradle Plugin documentation](https://micronaut-projects.github.io/micronaut-gradle-plugin/latest/)
-- [GraalVM Gradle Plugin documentation](https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html)
-## Feature data-jdbc documentation
+## Requirements
+- Java 17 (or 11+)
+- Gradle (or use the included `./gradlew` wrapper)
+- (Optional) PostgreSQL if using DB integration
 
-- [Micronaut Data JDBC documentation](https://micronaut-projects.github.io/micronaut-data/latest/guide/index.html#jdbc)
+---
 
+## Run the Application
 
-## Feature test-resources documentation
+```bash
+./gradlew run
+```
 
-- [Micronaut Test Resources documentation](https://micronaut-projects.github.io/micronaut-test-resources/latest/guide/)
-
-
-## Feature micronaut-aot documentation
-
-- [Micronaut AOT documentation](https://micronaut-projects.github.io/micronaut-aot/latest/guide/)
-
-
-## Feature jdbc-hikari documentation
-
-- [Micronaut Hikari JDBC Connection Pool documentation](https://micronaut-projects.github.io/micronaut-sql/latest/guide/index.html#jdbc)
-
+## Packages need to be created
+These packages need to be created in src/java/com.example.ApplicationName/
+- Service
+- Controller
+- Repository
+- Entity
+- Dto
+- Exceptions
 
