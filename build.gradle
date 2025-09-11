@@ -40,6 +40,11 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("io.micronaut:micronaut-http-client")
+    //Security
+    implementation("io.micronaut.security:micronaut-security")
+    implementation("io.micronaut.security:micronaut-security-jwt")
+    implementation("org.mindrot:jbcrypt:0.4") // for password hashing
+
 
 }
 

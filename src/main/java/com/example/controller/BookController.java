@@ -1,8 +1,8 @@
 package com.example.controller;
 
-import com.example.dto.BookRequestDto;
-import com.example.dto.BookResponseDto;
-import com.example.service.BookService;
+import com.example.dto.request.BookRequestDto;
+import com.example.dto.response.BookResponseDto;
+import com.example.service.Imp.BookServiceImp;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
 import jakarta.validation.Valid;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookController {
 
-    private final BookService bookService;
+    private final BookServiceImp bookService;
 
     @Post
         public HttpResponse<BookResponseDto> addBook(@Valid @Body BookRequestDto requestDto){

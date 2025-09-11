@@ -1,6 +1,7 @@
-package com.example.dto;
+package com.example.dto.response;
 
 import io.micronaut.core.annotation.Introspected;
+
 @Introspected
 public record BookResponseDto (
     long bookId,

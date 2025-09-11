@@ -1,4 +1,4 @@
-package com.example.dto;
+package com.example.dto.request;
 
 import io.micronaut.core.annotation.Introspected;
 import jakarta.validation.constraints.Min;
