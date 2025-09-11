@@ -15,6 +15,15 @@ micronaut:
             - PUT
             - DELETE
             - OPTIONS
+  cache:
+    caches:
+      bookCache:
+        maximumSize: ${CACHE_BOOKS_MAXSIZE:500}
+        expireAfterWrite: ${CACHE_BOOKS_TTL_SECONDS:300}
+  sessions:
+    enabled: true
+    redis:
+      enabled: false
 
 datasources:
   default:
@@ -42,6 +51,7 @@ security:
           secret:
             generator:
               secret: ${SECRETE_KEY}
+      expiration: ${JWT_EXPIRATION_SECONDS:3600}
 endpoints:
   all:
     enabled: true

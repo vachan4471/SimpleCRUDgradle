@@ -1,11 +1,11 @@
-package com.example.service.Imp;
+package com.example.service.Implementations;
 
 import com.example.dto.mapper.BookMapperClass;
 import com.example.dto.request.BookRequestDto;
 import com.example.dto.response.BookResponseDto;
 import com.example.entity.Book;
 import com.example.repository.BookRepository;
-import com.example.service.BookService;
+import com.example.service.interfaces.BookService;
 import jakarta.inject.Singleton;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

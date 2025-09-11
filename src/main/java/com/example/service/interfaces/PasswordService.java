@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.service.interfaces;
 
 public interface PasswordService {
     String encodePassword(String plain);

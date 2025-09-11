@@ -21,6 +21,6 @@ public class Book {
     private String bookTitle;
     private String author;
     private double price;
-
+    private boolean available=true;
 }
 

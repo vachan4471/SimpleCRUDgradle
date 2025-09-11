@@ -1,4 +1,4 @@
-package com.example.service.Imp;
+package com.example.service.Implementations;
 
 import com.example.dto.mapper.UserMapper;
 import com.example.dto.request.LoginRequestDto;
@@ -6,8 +6,8 @@ import com.example.dto.request.UserRequestDto;
 import com.example.dto.response.UserResponseDto;
 import com.example.entity.User;
 import com.example.repository.UserRepository;
-import com.example.service.PasswordService;
-import com.example.service.RegisterLoginService;
+import com.example.service.interfaces.PasswordService;
+import com.example.service.interfaces.RegisterLoginService;
 import jakarta.inject.Singleton;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;

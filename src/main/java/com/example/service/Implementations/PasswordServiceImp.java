@@ -1,6 +1,6 @@
-package com.example.service.Imp;
+package com.example.service.Implementations;
 
-import com.example.service.PasswordService;
+import com.example.service.interfaces.PasswordService;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class PasswordServiceImp implements PasswordService {

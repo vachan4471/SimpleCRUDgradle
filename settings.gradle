@@ -1,4 +1,5 @@
 
-
 rootProject.name="SimpleCRUDgradle"
+include 'shared', 'auth_service', 'book_service', 'borrow_service', 'gateway'
+
 
