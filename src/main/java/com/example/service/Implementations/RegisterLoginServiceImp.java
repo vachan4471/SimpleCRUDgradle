@@ -6,19 +6,20 @@ import com.example.dto.request.UserRequestDto;
 import com.example.dto.response.UserResponseDto;
 import com.example.entity.User;
 import com.example.repository.UserRepository;
-import com.example.service.UserService;
+import com.example.service.PasswordService;
+import com.example.service.RegisterLoginService;
 import jakarta.inject.Singleton;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.mindrot.jbcrypt.BCrypt;
 
 @Singleton
 @RequiredArgsConstructor
-public class UserServiceImp implements UserService {
+public class RegisterLoginServiceImp implements RegisterLoginService {
 
     private final UserRepository userRepo;
     private final UserMapper userMapper;
+    private final PasswordService passwordService;
 
     @Override
     public UserResponseDto register(UserRequestDto request) {
@@ -27,7 +28,7 @@ public class UserServiceImp implements UserService {
             throw new EntityExistsException("Username: "+savingUser.getUsername()+" Already Exists");
         }
         //saving the password in encoded manner.
-        savingUser.setPassword(BCrypt.hashpw(savingUser.getPassword(),BCrypt.gensalt()));
+        savingUser.setPassword(passwordService.encodePassword(savingUser.getPassword()));
         User savedUser = userRepo.save(savingUser);
         return userMapper.toResponse(savedUser);
     }
@@ -37,7 +38,7 @@ public class UserServiceImp implements UserService {
         User savedUser = userRepo.findByUsername(request.getUsername()).orElseThrow(
                 ()-> new EntityNotFoundException("User with username:"+request.getUsername()+" Not Found! Register first")
         );
-        if(!savedUser.getPassword().equals(BCrypt.hashpw(request.getPassword(),BCrypt.gensalt()))){
+        if(passwordService.verifyPassword(request.getPassword(), savedUser.getPassword())){
             throw new IllegalArgumentException("Password:"+request.getPassword()+" is wrong");
         }
         return "Generate Token here";
