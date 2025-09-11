@@ -31,3 +31,18 @@ jpa:
       hibernate:
         hbm2ddl:
           auto: update               # create, update, or create-drop
+
+security:
+    enabled: true
+    token:
+      jwt:
+        enabled: true
+        # Use a strong secret in production; for dev use a random long string
+        signatures:
+          secret:
+            generator:
+              secret: ${SECRETE_KEY}
+endpoints:
+  all:
+    enabled: true
+
